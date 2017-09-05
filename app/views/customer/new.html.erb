@@ -1,0 +1,31 @@
+<div class="col-md-6">
+    <%= form_tag :action => 'add' do %>
+        <div class="form-group">
+            <label for="CustomerNo">Customer No:</label>
+            <%= text_field 'customer', 'CustomerNo'%>
+        </div>
+        <div class="form-group">
+            <label for="FirstName">First Name:</label>
+            <%= text_field 'customer', 'FirstName'%>
+        </div>
+        <div class="form-group">
+            <label for="LastName">Last Name:</label>
+            <%= text_field 'customer', 'LastName'%>
+        </div>
+        <div class="form-group">
+            <label for="Email">Email:</label>
+            <%= text_field 'customer', 'Email'%>
+        </div>
+        <div class="form-group">
+            <label for="PhoneNo">Phone Number:</label>
+            <%= text_field 'customer', 'PhoneNo'%>
+        </div>
+        <div class="form-group">
+            <label for="PIN">PIN:</label>
+            <%= text_field 'customer', 'PIN'%>
+        </div>
+        <div class="form-group">
+            <%= submit_tag("Create",  class: 'btn btn-info') %>
+        </div>
+    <% end%>
+</div>

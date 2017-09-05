@@ -1,0 +1,8 @@
+<% if @customers.blank? %>
+    <p>There is no customers to show </p>
+<% else %>
+<p>These are the current customers in system</p>
+<% @customers.each do |c|%>
+    <p><%= c.LastName %></p>
+<% end %>
+<% end %>
