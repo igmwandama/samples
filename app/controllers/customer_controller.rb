@@ -25,9 +25,16 @@ class CustomerController < ApplicationController
         
         #save the person
         if @customer.save
-            render json: @customer
+            respond_to  do |format|
+                format.json {render :json =>{:done=>true, :data=>@customer}}
+                format.html {redirect_to :action => 'list'}
+            end
         else
-            render json: @customer.errors, status: :unprocessable_entity 
+            respond_to format do |f|
+                format.json {render json: @customer.errors, status: :unprocessable_entity }
+                format.html {redirect_to :action => 'new', notice:@customer.errors.full_messages}
+            end
+            
         end
     end
     

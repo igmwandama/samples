@@ -1,8 +1,54 @@
-<% if @customers.blank? %>
-    <p>There is no customers to show </p>
-<% else %>
-<p>These are the current customers in system</p>
-<% @customers.each do |c|%>
-    <p><%= c.LastName %></p>
-<% end %>
-<% end %>
+<div class="col-md-8">
+    <div class="jumbotron">
+        <div class="form-group">
+            <div class="form-group">
+                <%= link_to :controller => 'account' do %>
+                    <button class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-chevron-left"></i> Back </button>
+                <% end %>
+            </div>
+            <h3 class="dispaly-3">Account Holders</h3>
+            <hr style="margin-bottom:5px"/>
+            <div class="form-group text-right">
+                <%= link_to 'Create New Customer', {:action => 'new'}, :class => 'btn btn-default' %>
+                <hr style="margin-top:5px"/>
+            </div>
+            <div class="form-group">
+                <table class="table table-condensed table-striped">
+                    <thead>
+                        <tr>
+                            <th>Customer Number</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email Address</th>
+                            <th>Phone Number</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if @customers.blank? %>
+                            <tr><td colspan="5"><center>No Customers Found</center></td></tr>
+                        <% else %>
+                            <% @customers.each do |c|%>
+                                <tr>
+                                    <td><%= c.CustomerNo%></td>
+                                    <td><%= c.FirstName%></td>
+                                    <td><%= c.LastName%></td>
+                                    <td><%= c.Email%></td>
+                                    <td><%= c.PhoneNo%></td>
+                                    <td>
+                                        <% a = Account.find_by(CustomerNo: c.CustomerNo)
+                                            if a.blank? %>
+                                                <%= link_to 'Add Account', {:action => 'new', :controller => 'account', :id => c.CustomerNo}, :class => 'btn btn-sm btn-default' %>
+                                            <% else%>
+                                                <%= link_to 'View Account', {:action => 'details', :controller => 'account', :AccountNo => a.AccountNo}, :class => 'btn btn-sm btn-success' %>
+                                            <% end %>
+                                    </td>
+                                </tr>
+                            <% end %>
+                        <% end %>
+                    </tbody>
+                
+            </div>
+        </div>
+    </div>
+</div>

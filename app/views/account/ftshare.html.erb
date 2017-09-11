@@ -1,0 +1,27 @@
+<div class="col-md-8">
+    <div class="jumbotron">
+        <div class="form-group">
+            <%= link_to  :action => 'details', :AccountNo => @account do %>
+                <button class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-chevron-left"></i> Back </button>
+            <% end %>
+        </div>
+        <%= form_tag :action => 'transfer' do %>
+            <div class="form-group"><h2>Transfer Money</h2></div>
+            <hr />
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label for="CustomerNo">Account No:</label>
+                    <%= text_field 'activity', 'AccountNo', class: 'input' %>
+                </div>
+                <div class="form-group">
+                    <label for="Amount">Amount:</label>
+                    <%= text_field 'activity', 'Amount', class: 'input' %>
+                </div>
+                <div class="form-group text-center">
+                    <%= submit_tag("Send", class: 'btn btn-success', style: 'margin-left:180px')%>
+                </div>
+            </div>
+        <% end %>
+        <div class="clearfix"> </div>
+    </div>
+</div>

@@ -9,6 +9,18 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <div class="navbar navbar-info">
+        <div class="container-fluid">
+          <h4 class="brand">
+            <%= link_to  :controller => 'about', :action => 'about', :AccountNo => @account do %>
+              <span class="info">Mobile</span>Bank</h4>
+            <% end %>
+        </div>
+      </div>
+    </header>
+    <div class="container-fluid">
+      <%= yield %>
+    </div>
   </body>
 </html>
